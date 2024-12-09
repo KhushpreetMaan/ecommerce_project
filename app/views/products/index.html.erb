@@ -1,0 +1,35 @@
+<section class="products-index">
+  <header class="page-header">
+    <div class="intro">
+      <p>
+        Earls offers a captivating dining experience, blending traditional Indian flavors with a modern twist...
+      </p>
+      <p>
+        At Earls guests are treated to an exquisite journey through Indian culinary heritage...
+      </p>
+      <p>
+        We have a wide variety of dish menu available for purchase on our website. Whether you are looking...
+      </p>
+    </div>
+  </header>
+
+
+  <%= form_with url: products_path, method: :get, local: true do |form| %>
+    <div class="search-form">
+      <%= form.label :search, "Search for a product:" %>
+      <%= form.text_field :search, value: params[:search], placeholder: "Keyword" %>
+
+      <%= form.label :category_id, "Choose a category:" %>
+      <%= form.collection_select :category_id, Category.all, :id, :name, include_blank: 'All Categories' %>
+
+      <%= form.submit "Search" %>
+    </div>
+  <% end %>
+
+  
+  <div class="products">
+    <%= render @products %>
+  </div>
+
+  <%= paginate @products %>
+</section>

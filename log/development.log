@@ -6916,3 +6916,27 @@ Processing by ProductsController#index as HTML
 Completed 200 OK in 103ms (Views: 85.5ms | ActiveRecord: 13.2ms | Allocations: 26537)
 
 
+[dotenv] Set [36mSTRIPE_PUBLISHABLE_KEY[0m, [36mSTRIPE_SECRET_KEY[0m, [36mBASIC_AUTH_USERNAME[0m, and [36mBASIC_AUTH_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/" for 127.0.0.1 at 2024-12-10 11:27:31 -0600
+  [1m[35m (5.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mCategory Load (4.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/products/index.html.erb:23
+  [1m[36mProduct Load (5.4ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY "products"."created_at" DESC LIMIT $1 OFFSET $2[0m  [["LIMIT", 6], ["OFFSET", 0]]
+  ↳ app/views/products/index.html.erb:31
+  Rendered collection of products/_product.html.erb [6 times] (Duration: 269.2ms | Allocations: 21643)
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products"[0m
+  ↳ app/views/products/index.html.erb:34
+  Rendered products/index.html.erb within layouts/application (Duration: 386.9ms | Allocations: 40558)
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/layouts/_top_nav.html.erb:36
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  Rendered layouts/_top_nav.html.erb (Duration: 30.2ms | Allocations: 12075)
+  Rendered layout layouts/application.html.erb (Duration: 13140.9ms | Allocations: 267230)
+Completed 200 OK in 13253ms (Views: 13099.7ms | ActiveRecord: 67.0ms | Allocations: 274618)
+
+
